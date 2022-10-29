@@ -54,7 +54,7 @@ export class MockData {
   ];
 
   public static readonly clientDetailsMockData: ClientDetails = {
-    phoneNumber: '79995551111',
+    phoneNumber: '79999999999',
     transactions: [
       {
         amount: 123123,
@@ -77,6 +77,30 @@ export class MockData {
       {
         amount: 555523.43,
         contractor: 'Наименование контрагента 4',
+        date: new Date(),
+        type: TransactionTypes.Outcoming
+      },
+      {
+        amount: 123123,
+        contractor: 'Наименование контрагента 5',
+        date: new Date(),
+        type: TransactionTypes.Incoming
+      },
+      {
+        amount: 123123.34,
+        contractor: 'Наименование контрагента 6',
+        date: new Date(),
+        type: TransactionTypes.Outcoming
+      },
+      {
+        amount: 100000000.01,
+        contractor: 'Наименование контрагента 7',
+        date: new Date(),
+        type: TransactionTypes.Incoming
+      },
+      {
+        amount: 555523.43,
+        contractor: 'Наименование контрагента 8',
         date: new Date(),
         type: TransactionTypes.Outcoming
       },

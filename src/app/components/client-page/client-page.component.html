@@ -1,1 +1,122 @@
-<p>client-page works!</p>
+<div class="client-detail-wrapper">
+  <p-panel [header]="client.organizationName">
+    <div class="row">
+      <div class="row-field">ИНН</div>
+      <div class="row-value">{{client.inn}}</div>
+    </div>
+
+    <div class="row">
+      <div class="row-field">Счёт открыт:</div>
+      <div class="row-value">{{client.openingDate | date: 'dd MMMM yyyy'}}</div>
+    </div>
+
+    <div class="row">
+      <div class="row-field">Остаток на счёте:</div>
+      <div class="row-value">{{client.accountBalance}}</div>
+    </div>
+
+    <div class="row">
+      <div class="row-field">Телефон</div>
+      <div class="row-value">
+        <div *ngIf="clientForm" [formGroup]="clientForm">
+          <p-inputMask
+            [style]="{'text-align':'right', 'width':'150px'}"
+            formControlName="phoneNumber"
+            mask="+7 (999) 999-9999"
+            placeholder="+7 (999) 999-9999"
+          ></p-inputMask>
+        </div>
+
+        <p-dialog
+          [(visible)]="dialogVisibility"
+          [draggable]="false"
+          [modal]="true"
+          [resizable]="false"
+          [style]="{'width': '40vw'}"
+          header="Вы действительно хотите изменить телефон?"
+        >
+          <ng-template pTemplate="footer">
+            <button
+              (click)="changePhoneNumber()"
+              *ngIf="canEdit"
+              class="p-button-raised p-button-success"
+              label="Ок"
+              pButton
+              type="button"
+            ></button>
+            <button
+              (click)="dialogVisibility=false"
+              *ngIf="canEdit"
+              class="p-button-raised p-button-danger"
+              label="Отмена"
+              pButton
+              type="button"
+            ></button>
+          </ng-template>
+        </p-dialog>
+      </div>
+    </div>
+
+    <div class="row footer-row">
+      <div class="row-field">
+        <a class="navigate-back-button p-button p-button-warning" routerLink="/client-list">Назад</a>
+      </div>
+      <div class="row-value">
+        <button
+          (click)="enablePhoneInput()"
+          *ngIf="!canEdit"
+          class="p-button-raised"
+          label="Изменить"
+          pButton
+          type="button"
+        ></button>
+        <button
+          (click)="showModal()"
+          *ngIf="canEdit" [disabled]="clientForm?.invalid"
+          class="p-button-raised p-button-success"
+          label="Ок"
+          pButton
+          type="button"
+        ></button>
+        <button
+          (click)="disablePhoneInput()"
+          *ngIf="canEdit"
+          class="p-button-raised p-button-danger"
+          label="Отмена"
+          pButton
+          type="button"
+        ></button>
+      </div>
+    </div>
+  </p-panel>
+
+  <p-panel [header]="'Список платежей'">
+    <ng-template #loading>
+      <p-progressSpinner></p-progressSpinner>
+    </ng-template>
+    <p-table
+      *ngIf="clientDetails.transactions as transactions; else loading"
+      [value]="transactions"
+      responsiveLayout="scroll"
+      selectionMode="single"
+      styleClass="p-datatable-striped"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Дата платежа</th>
+          <th>Контрагент</th>
+          <th>Сумма</th>
+          <th>Тип</th>
+        </tr>
+      </ng-template>
+      <ng-template let-transaction pTemplate="body">
+        <tr>
+          <td>{{transaction.date | date:'dd.MM.YYYY'}}</td>
+          <td>{{transaction.contractor}}</td>
+          <td>{{transaction.amount}}</td>
+          <td>{{transaction.type}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </p-panel>
+</div>

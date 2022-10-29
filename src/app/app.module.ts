@@ -13,6 +13,9 @@ import {ButtonModule} from "primeng/button";
 import {DialogModule} from "primeng/dialog";
 import {registerLocaleData} from "@angular/common";
 import localeRu from '@angular/common/locales/ru';
+import {CardModule} from "primeng/card";
+import {PanelModule} from "primeng/panel";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 registerLocaleData(localeRu);
 
@@ -24,13 +27,16 @@ registerLocaleData(localeRu);
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ReactiveFormsModule,
     TableModule,
     ProgressSpinnerModule,
     InputMaskModule,
     ButtonModule,
-    DialogModule
+    DialogModule,
+    CardModule,
+    PanelModule
   ],
   providers: [{
     provide: LOCALE_ID,

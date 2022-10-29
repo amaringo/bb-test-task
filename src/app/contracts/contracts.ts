@@ -12,9 +12,9 @@ export interface ClientDetails {
 }
 
 export interface Transaction {
-  amount: number;
-  contractor: string;
   date: Date;
+  contractor: string;
+  amount: number;
   type: TransactionTypes;
 }
 
