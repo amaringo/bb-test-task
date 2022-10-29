@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {MockData} from "../../consts/mocks";
 
 @Component({
   selector: 'app-client-list',
@@ -7,10 +8,17 @@ import {Component, OnInit} from '@angular/core';
 })
 export class ClientListComponent implements OnInit {
 
+  public clientsData = MockData.clientsMock;
+
   constructor() {
   }
 
   ngOnInit(): void {
   }
+
+  public goToClientPage(id: number): void {
+    //
+  }
+
 
 }
