@@ -16,6 +16,7 @@ import localeRu from '@angular/common/locales/ru';
 import {CardModule} from "primeng/card";
 import {PanelModule} from "primeng/panel";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CurrencyTextComponent} from './components/currency-text/currency-text.component';
 
 registerLocaleData(localeRu);
 
@@ -23,7 +24,8 @@ registerLocaleData(localeRu);
   declarations: [
     AppComponent,
     ClientListComponent,
-    ClientPageComponent
+    ClientPageComponent,
+    CurrencyTextComponent
   ],
   imports: [
     BrowserModule,

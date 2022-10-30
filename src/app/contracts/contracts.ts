@@ -3,7 +3,7 @@ export interface Client {
   organizationName: string;
   inn: number;
   openingDate: Date;
-  accountBalance: number;
+  accountBalance: CurrencyAmount;
 }
 
 export interface ClientDetails {
@@ -14,12 +14,17 @@ export interface ClientDetails {
 export interface Transaction {
   date: Date;
   contractor: string;
-  amount: number;
+  amount: CurrencyAmount;
   type: TransactionTypes;
 }
 
 export enum TransactionTypes {
   Incoming = 'Incoming',
   Outcoming = 'Outcoming'
+}
+
+export interface CurrencyAmount {
+  amount: number,
+  currencyCode: string
 }
 

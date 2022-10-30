@@ -12,7 +12,9 @@
 
     <div class="row">
       <div class="row-field">Остаток на счёте:</div>
-      <div class="row-value">{{client.accountBalance}}</div>
+      <div class="row-value">
+        <app-currency-text [amountData]="client.accountBalance"></app-currency-text>
+      </div>
     </div>
 
     <div class="row">
@@ -65,7 +67,7 @@
         <button
           (click)="enablePhoneInput()"
           *ngIf="!canEdit"
-          class="p-button-raised"
+          class="p-button"
           label="Изменить"
           pButton
           type="button"
@@ -73,7 +75,7 @@
         <button
           (click)="showModal()"
           *ngIf="canEdit" [disabled]="clientForm?.invalid"
-          class="p-button-raised p-button-success"
+          class="p-button-success"
           label="Ок"
           pButton
           type="button"
@@ -81,7 +83,7 @@
         <button
           (click)="disablePhoneInput()"
           *ngIf="canEdit"
-          class="p-button-raised p-button-danger"
+          class="p-button-danger"
           label="Отмена"
           pButton
           type="button"
@@ -113,7 +115,9 @@
         <tr>
           <td>{{transaction.date | date:'dd.MM.YYYY'}}</td>
           <td>{{transaction.contractor}}</td>
-          <td>{{transaction.amount}}</td>
+          <td>
+            <app-currency-text [amountData]="transaction.amount"></app-currency-text>
+          </td>
           <td>{{transaction.type}}</td>
         </tr>
       </ng-template>
