@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CurrencyAmount} from "../../contracts/contracts";
+import {CurrencyAmount} from '../../contracts/contracts';
 
 @Component({
   selector: 'app-currency-text',
@@ -9,7 +9,7 @@ import {CurrencyAmount} from "../../contracts/contracts";
 export class CurrencyTextComponent implements OnInit {
 
   @Input()
-  public amountData: CurrencyAmount | null = null;
+  public amountData?: CurrencyAmount | null = null;
 
   @Input()
   public minIntegerDigits: number = 1;

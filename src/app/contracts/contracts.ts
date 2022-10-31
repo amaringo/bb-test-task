@@ -19,8 +19,8 @@ export interface Transaction {
 }
 
 export enum TransactionTypes {
-  Incoming = 'Incoming',
-  Outcoming = 'Outcoming'
+  Incoming = 'Входящий',
+  Outcoming = 'Исходящий'
 }
 
 export interface CurrencyAmount {

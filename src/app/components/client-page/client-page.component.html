@@ -1,19 +1,19 @@
 <div class="client-detail-wrapper">
-  <p-panel [header]="client.organizationName">
+  <p-panel [header]="(client$ | async)?.organizationName ?? ''">
     <div class="row">
       <div class="row-field">ИНН</div>
-      <div class="row-value">{{client.inn}}</div>
+      <div class="row-value">{{(client$ | async)?.inn}}</div>
     </div>
 
     <div class="row">
       <div class="row-field">Счёт открыт:</div>
-      <div class="row-value">{{client.openingDate | date: 'dd MMMM yyyy'}}</div>
+      <div class="row-value">{{(client$ | async)?.openingDate | date: 'dd MMMM yyyy'}}</div>
     </div>
 
     <div class="row">
       <div class="row-field">Остаток на счёте:</div>
       <div class="row-value">
-        <app-currency-text [amountData]="client.accountBalance"></app-currency-text>
+        <app-currency-text [amountData]="(client$ | async)?.accountBalance"></app-currency-text>
       </div>
     </div>
 
@@ -22,7 +22,7 @@
       <div class="row-value">
         <div *ngIf="clientForm" [formGroup]="clientForm">
           <p-inputMask
-            [style]="{'text-align':'right', 'width':'150px'}"
+            [style]="{'text-align':'right', 'width':'160px'}"
             formControlName="phoneNumber"
             mask="+7 (999) 999-9999"
             placeholder="+7 (999) 999-9999"
@@ -97,7 +97,7 @@
       <p-progressSpinner></p-progressSpinner>
     </ng-template>
     <p-table
-      *ngIf="clientDetails.transactions as transactions; else loading"
+      *ngIf="(store.clientDetails$ | async)?.transactions as transactions; else loading"
       [value]="transactions"
       responsiveLayout="scroll"
       selectionMode="single"

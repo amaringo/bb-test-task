@@ -19,6 +19,7 @@
 
 .row-field {
   font-weight: bold;
+  text-align: left;
 }
 
 .row-value {
@@ -34,8 +35,11 @@
   margin-top: 1rem;
 
   button {
-    margin-left: 0.5rem;
+    margin-left: 1rem;
   }
 }
 
+p-panel {
+  text-align: center;
+}
 

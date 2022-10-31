@@ -54,7 +54,7 @@ export class MockData {
   ];
 
   public static readonly clientDetailsMockData: ClientDetails = {
-    phoneNumber: '79999999999',
+    phoneNumber: '79999933999',
     transactions: [
       {
         amount: {amount: 123123, currencyCode: 'USD'},

@@ -17,6 +17,8 @@ import {CardModule} from "primeng/card";
 import {PanelModule} from "primeng/panel";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {CurrencyTextComponent} from './components/currency-text/currency-text.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {InterceptorService} from "./services/interceptor.service";
 
 registerLocaleData(localeRu);
 
@@ -31,6 +33,7 @@ registerLocaleData(localeRu);
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     ReactiveFormsModule,
     TableModule,
     ProgressSpinnerModule,
@@ -40,10 +43,16 @@ registerLocaleData(localeRu);
     CardModule,
     PanelModule
   ],
-  providers: [{
-    provide: LOCALE_ID,
-    useValue: "ru-RU"
-  }],
+  providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: "ru-RU"
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

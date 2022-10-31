@@ -4,7 +4,7 @@
       <p-progressSpinner></p-progressSpinner>
     </ng-template>
     <p-table
-      *ngIf="clientsData as clients; else loading"
+      *ngIf="(store.clientList$ | async) as clients; else loading"
       [value]="clients"
       responsiveLayout="scroll"
       selectionMode="single"

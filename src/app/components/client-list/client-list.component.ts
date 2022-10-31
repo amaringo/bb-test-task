@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MockData} from "../../consts/mocks";
 import {Router} from "@angular/router";
+import {StoreService} from "../../services/store.service";
 
 @Component({
   selector: 'app-client-list',
@@ -9,17 +10,15 @@ import {Router} from "@angular/router";
 })
 export class ClientListComponent implements OnInit {
 
-  public clientsData = MockData.clientsMock;
-
-  constructor(private router: Router) {
+  constructor(private router: Router, public store: StoreService) {
   }
 
   ngOnInit(): void {
+    this.store.getClientList();
   }
 
   public goToClientPage(id: number): void {
     this.router.navigate([`client-page/${id}`]);
   }
-
 
 }
