@@ -7,7 +7,7 @@ export class MockData {
       organizationName: 'Название организации 1',
       inn: 7565677563,
       openingDate: new Date(),
-      accountBalance: {amount: 92.1, currencyCode: 'RUB'},
+      accountBalance: {amount: 9200.1, currencyCode: 'RUB'},
     },
     {
       id: 2,
